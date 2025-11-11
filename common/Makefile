@@ -1,7 +1,8 @@
-LIB := common/libcommon.o
 SOURCES := $(wildcard common/lib/*.c)
-OBJFILES := $(patsubst %.c,%.o,$(SOURCES))
-TARGETS := $(OBJFILES) $(LIB)
-DEPFILES := $(patsubst %.c,%.d,$(SOURCES))
 
-# TODO: maybe make common have a native compilation? and then you can link it and everything will be fine. This also allows you to create a generic errcstr function
+LIB := $(OUTDIR)/common/libcommon.o
+NLIB := $(NOUTDIR)/common/libcommon.o
+OBJFILES := $(patsubst %.c,$(OUTDIR)/%.o,$(SOURCES))
+NOBJFILES := $(patsubst %.c,$(NOUTDIR)/%.o,$(SOURCES))
+TARGETS := $(OBJFILES) $(NOBJFILES) $(LIB) $(NLIB)
+DEPFILES := $(patsubst %.o,%.d,$(OBJFILES)) $(patsubst %.o,%.d,$(NOBJFILES))

@@ -2,6 +2,8 @@
 #include "elftofnk/include/vector.h"
 #include "common/include/errc.h"
 
+// TODO: Write this
+
 static const char* errcstr[] = {
     [ELFTOFNK_VECTOR_ERRC_FAILED_ALLOC - COMMON_ERRC_BASE] =      "Failed to allocate enough memory",
     [ELFTOFNK_VECTOR_ERRC_UNREACHABLE_INDEX - COMMON_ERRC_BASE] = "Index out of bounds",

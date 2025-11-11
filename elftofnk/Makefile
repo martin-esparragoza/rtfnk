@@ -1,9 +1,8 @@
-PROGSOURCES := $(wildcard elftofnk/src/*.c)
-LIBSOURCES := $(wildcard elftofnk/lib/*.c)
-SOURCES := $(PROGSOURCES) $(LIBSOURCES)
-PROGOBJFILES = $(patsubst %.c,%.o,$(PROGSOURCES))
-LIBOBJFILES = $(patsubst %.c,%.o,$(LIBSOURCES))
-OBJFILES := $(LIBOBJFILES) $(PROGOBJFILES) # the order do matter
-TARGETS := $(OBJFILES)
-DEPFILES := $(patsubst %.c,%.d,$(SOURCES))
+SOURCES := $(wildcard elftofnk/src/*.c) $(wildcard elftofnk/lib/*.c)
+
+# Native executable
+NEXEC := $(NOUTDIR)/elftofnk/elftofnk.o
+NOBJFILES := $(patsubst %.c,$(NOUTDIR)/%.o,$(SOURCES))
+TARGETS := $(NOBJFILES) $(NEXEC)
+DEPFILES := $(patsubst %.c,$(NOUTDIR)/%.d,$(SOURCES))
 CNATIVELINK += -lbfd

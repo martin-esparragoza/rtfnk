@@ -1,5 +1,6 @@
-LIB := arch/lib$(ARCH).o
 SOURCES := $(wildcard arch/$(ARCH)/lib/*.c)
-OBJFILES := $(patsubst %.c,%.o,$(SOURCES))
+
+LIB := $(OUTDIR)/arch/lib$(ARCH).o
+OBJFILES := $(patsubst %.c,$(OUTDIR)/%.o,$(SOURCES))
 TARGETS := $(OBJFILES) $(LIB)
-DEPFILES := $(patsubst %.c,%.d,$(SOURCES))
+DEPFILES := $(patsubst %.c,$(OUTDIR)/%.d,$(SOURCES))
